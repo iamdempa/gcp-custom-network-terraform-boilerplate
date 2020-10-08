@@ -6,7 +6,7 @@
 
 # provide 
 provider "google" {
-  credentials = file(var.gce_token)
+  credentials = file("${var.gce_token}")
   project     = var.project_name
   region      = var.region
   zone        = var.zone
