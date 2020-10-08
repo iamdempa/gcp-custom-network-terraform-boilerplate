@@ -27,20 +27,20 @@ Build:
   tags:
     - gcp-terraform-boilerplate
 
-destroy_if_failed:
-  stage: Clean Up
-  script:
-    - terraform init
-    - terraform destroy --auto-approve
-  when: on_failure
-  tags:
-    - gcp-terraform-boilerplate
+# destroy_if_failed:
+#   stage: Clean Up
+#   script:
+#     - terraform init
+#     - terraform destroy --auto-approve
+#   when: on_failure
+#   tags:
+#     - gcp-terraform-boilerplate
 
-destroy:
-  stage: Clean Up
-  script:
-    - terraform init
-    - terraform destroy --auto-approve
-  when: manual
-  tags:
-    - gcp-terraform-boilerplate
+# destroy:
+#   stage: Clean Up
+#   script:
+#     - terraform init
+#     - terraform destroy --auto-approve
+#   when: manual
+#   tags:
+#     - gcp-terraform-boilerplate

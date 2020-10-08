@@ -105,7 +105,7 @@ module "firewall_rule_icmp_public" {
 module "firewall_rule_private_vm" {
   source = "./modules/firewall_rules"
 
-  firewall_rule_name = "private_vm"
+  firewall_rule_name = "private-vm"
   network = module.network.network_name
   protocol_type = "icmp"
   ports_types = null
