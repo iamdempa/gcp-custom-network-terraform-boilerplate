@@ -30,7 +30,7 @@ This repository has two branches namely `no-backend` and `with-backend` for conf
 
 For the 2nd scenario, you need to create a Variable to store the `credentials` file and here I have set the variable name as `GCE_TOKEN` using;
 
-> (Settings -> CI/CD -> Variables)
+> Settings -> CI/CD -> Variables
 
 And also **replace** the `bucket` and `prefix` values with yours.
 
@@ -40,4 +40,4 @@ terraform init -backend-config="bucket=<your-bucket-name>" \
                -backend-config="credentials=$GCE_TOKEN"
 ```
 
-PS: It is not healthy to store your credentials or API tokens for public visibility. Use the `no-backend` branch.
+> PS: It is not healthy to store your credentials or API tokens for public visibility. Use the `no-backend` branch.
