@@ -28,9 +28,9 @@ module "network" {
 module "public_subnet" {
   source = "./modules/subnetworks"
 
-  public_subnetwork_name = "public-subnetwork"
-  public_cidr = "10.0.0.0/21"
-  public_subnetwork_region = "us-west2"
+  subnetwork_name = "public-subnetwork"
+  cidr = "10.0.0.0/21"
+  subnetwork_region = "us-west2"
   network = module.network.network_name
   private_ip_google_access = "false"
 }
@@ -39,9 +39,9 @@ module "public_subnet" {
 module "private_subnet" {
   source = "./modules/subnetworks"
 
-  public_subnetwork_name = "private-subnetwork"
-  public_cidr = "10.0.8.0/21"
-  public_subnetwork_region = "us-west2"
+  subnetwork_name = "private-subnetwork"
+  cidr = "10.0.8.0/21"
+  subnetwork_region = "us-west2"
   network = module.network.network_name
   private_ip_google_access = "false"
 }
