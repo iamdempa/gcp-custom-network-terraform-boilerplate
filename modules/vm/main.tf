@@ -3,7 +3,7 @@ resource "google_compute_instance" "virtual-machine" {
   machine_type = var.machine_type
   zone         = var.vm_zone
 
-  tags = [var.network_tags]
+  tags = var.network_tags
 
   boot_disk {
     initialize_params {
@@ -20,5 +20,5 @@ resource "google_compute_instance" "virtual-machine" {
   }
 
   metadata = {
-    Name = "test"
+    Name = var.metadata_Name_value
   }

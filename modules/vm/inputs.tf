@@ -21,3 +21,7 @@ variable "subnetwork" {
 variable "network_tags" {
     type = "list"
 }
+
+variable "metadata_Name_value" {
+    type = "string"
+}

@@ -1,14 +1,14 @@
-variable "public_subnetwork_name" {
+variable "subnetwork_name" {
   type = string
 }
 
 
-variable "public_cidr" {
+variable "cidr" {
   type = string
 }
 
 
-variable "public_subnetwork_region" {
+variable "subnetwork_region" {
   type = string
 }
 
