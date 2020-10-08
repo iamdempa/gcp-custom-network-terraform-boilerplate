@@ -10,6 +10,8 @@ provider "google" {
 # through the gitlab cicd variables)
 terraform {
   backend "gcs" {
+    bucket = "tf_backend_gcp_banuka_jana_jayarathna_k8s"
+    prefix = "terraform/gcp/boilerplate"
   }
 }
 

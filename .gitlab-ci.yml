@@ -21,7 +21,7 @@ Build:
   stage: Build the Infrastructure
   script:
     - terraform get
-    - terraform init -backend-config="bucket=tf_backend_gcp_banuka_jana_jayarathna_k8s" -backend-config="prefix=terraform/gcp/boilerplate" -backend-config="credentials=$GCE_TOKEN"
+    - terraform init
     - terraform plan
     - terraform apply --auto-approve
   tags:
@@ -30,7 +30,7 @@ Build:
 destroy_if_failed:
   stage: Clean Up
   script:
-    - terraform init -backend-config="bucket=tf_backend_gcp_banuka_jana_jayarathna_k8s" -backend-config="prefix=terraform/gcp/boilerplate" -backend-config="credentials=$GCE_TOKEN"
+    - terraform init
     - terraform destroy --auto-approve
   when: on_failure
   tags:
@@ -39,7 +39,7 @@ destroy_if_failed:
 destroy:
   stage: Clean Up
   script:
-    - terraform init -backend-config="bucket=tf_backend_gcp_banuka_jana_jayarathna_k8s" -backend-config="prefix=terraform/gcp/boilerplate" -backend-config="credentials=$GCE_TOKEN"
+    - terraform init
     - terraform destroy --auto-approve
   when: manual
   tags:
