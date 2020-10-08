@@ -1,4 +1,10 @@
-# Provide 
+###########################################
+#                                         #
+#                PROVIDER                 # 
+#                                         #
+###########################################
+
+# provide 
 provider "google" {
   # credentials = file("token.json")
   project     = var.project_name
@@ -6,15 +12,28 @@ provider "google" {
   zone        = var.zone
 }
 
-# # Configure the backend (variables are not allowed for backend configuration)
+
+###########################################
+#                                         #
+#                BACKEND                  # 
+#                                         #
+###########################################
+
+# Configure the backend (since variables are not allowed for backend configuration, setting the credentials 
+# through the gitlab cicd variables)
 terraform {
   backend "gcs" {
-    # bucket      = "tf_backend_gcp_banuka_jana_jayarathna_k8s"
-    # prefix      = "terraform/gcp/boilerplate"
-    # credentials = var.gce_token
+    bucket = "tf_backend_gcp_banuka_jana_jayarathna_k8s"
+    prefix = "terraform/gcp/boilerplate"
   }
 }
 
+
+###########################################
+#                                         #
+#                RESOURCES                # 
+#                                         #
+###########################################
 
 # creating the network 
 module "network" {
@@ -62,7 +81,6 @@ module "public_instance" {
   
 }
 
-
 # create the vm in public subnet
 module "private_instance" {
   source = "./modules/vm"
@@ -76,40 +94,43 @@ module "private_instance" {
   metadata_Name_value = "private_vm"
 }
 
-# create firewall rule with ssh access to all the instances
-# module "firewall_rule_ssh_all" {
-#   source = "./modules/firewall_rules"
+# create firewall rule with ssh access to the public instance/s
+module "firewall_rule_public_ssh_all" {
+  source = "./modules/firewall_rules"
 
-#   firewall_rule_name = "ssh-all-instances"
-#   network = module.network.network_name
-#   protocol = "tcp"
-#   ports = ["22"]
-#   source_ranges = ["0.0.0.0/0"]
+  firewall_rule_name = "ssh-all-public-instances"
+  network = module.network.network_name
+  protocol_type = "tcp"
+  ports_types = ["22"]
+  source_tags = null
+  source_ranges = ["0.0.0.0/0"]
+  target_tags = ["public-vm"]
+}
 
-# }
-
-
-# create firewall rule to access only the public vm
-module "firewall_rule_public_vm" {
+# create firewall rule to access only the public vm with icmp
+module "firewall_rule_icmp_public" {
   source = "./modules/firewall_rules"
 
   firewall_rule_name = "access-public-vm"
   network = module.network.network_name
   protocol_type = "icmp"
-  # ports = [""]
+  ports_types = null
+  source_tags = null
   source_ranges = ["0.0.0.0/0"]
   target_tags = ["public-vm"]
 }
 
+# firwall rule for private instances 
+module "firewall_rule_private_vm" {
+  source = "./modules/firewall_rules"
 
-# resource "google_compute_firewall" "default" {
-#   name    = "test-firewall"
-#   network = module.network.network_name
+  firewall_rule_name = "private-vm"
+  network = module.network.network_name
+  protocol_type = "icmp"
+  ports_types = null
+  source_tags = ["public-vm"]
+  source_ranges = null
+  target_tags = ["private-vm"]
+}
 
-#   allow {
-#     protocol = "icmp"
-#   }
 
-#   source_ranges = ["0.0.0.0/0"]
-#   target_tags = ["public-vm"]
-# }
