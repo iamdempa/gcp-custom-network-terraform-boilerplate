@@ -32,7 +32,7 @@ module "public_subnet" {
   cidr = "10.0.0.0/21"
   subnetwork_region = "us-west2"
   network = module.network.network_name
-  depends_on = [module.network]
+  depends_on_resoures = [module.network]
   private_ip_google_access = "false"
 }
 
