@@ -1,4 +1,10 @@
-# Provide 
+###########################################
+#                                         #
+#                PROVIDER                 # 
+#                                         #
+###########################################
+
+# provide 
 provider "google" {
   # credentials = file("token.json")
   project     = var.project_name
@@ -6,7 +12,14 @@ provider "google" {
   zone        = var.zone
 }
 
-# Configure the backend (variables are not allowed for backend configuration, setting the credentials 
+
+###########################################
+#                                         #
+#                BACKEND                  # 
+#                                         #
+###########################################
+
+# Configure the backend (since variables are not allowed for backend configuration, setting the credentials 
 # through the gitlab cicd variables)
 terraform {
   backend "gcs" {
@@ -15,6 +28,12 @@ terraform {
   }
 }
 
+
+###########################################
+#                                         #
+#                RESOURCES                # 
+#                                         #
+###########################################
 
 # creating the network 
 module "network" {
@@ -62,7 +81,6 @@ module "public_instance" {
   
 }
 
-
 # create the vm in public subnet
 module "private_instance" {
   source = "./modules/vm"
@@ -89,7 +107,7 @@ module "firewall_rule_public_ssh_all" {
   target_tags = ["public-vm"]
 }
 
-# create firewall rule to access only the public vm
+# create firewall rule to access only the public vm with icmp
 module "firewall_rule_icmp_public" {
   source = "./modules/firewall_rules"
 
@@ -102,6 +120,7 @@ module "firewall_rule_icmp_public" {
   target_tags = ["public-vm"]
 }
 
+# firwall rule for private instances 
 module "firewall_rule_private_vm" {
   source = "./modules/firewall_rules"
 
