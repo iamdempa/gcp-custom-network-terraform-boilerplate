@@ -18,6 +18,6 @@ variable "source_ranges" {
     type = list
 }
 
-# variable "target_tags" {
-#     type = list
-# }
+variable "target_tags" {
+    type = list
+}
