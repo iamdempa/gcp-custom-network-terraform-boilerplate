@@ -104,7 +104,7 @@ module "private_instance" {
 
 resource "google_compute_firewall" "default" {
   name    = "test-firewall"
-  network = gmodule.network.network_name
+  network = module.network.network_name
 
   allow {
     protocol = "icmp"
