@@ -6,12 +6,12 @@ provider "google" {
   zone        = var.zone
 }
 
-# Configure the backend (variables are not allowed for backenc configuration)
+# Configure the backend (variables are not allowed for backend configuration)
 terraform {
   backend "gcs" {
     bucket      = "tf_backend_gcp_banuka_jana_jayarathna_k8s"
     prefix      = "terraform/gcp/boilerplate"
-    credentials = "./token.json"
+    # credentials = "./token.json"
   }
 }
 
