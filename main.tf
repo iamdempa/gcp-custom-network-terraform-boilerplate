@@ -11,7 +11,7 @@ terraform {
   backend "gcs" {
     bucket      = "tf_backend_gcp_banuka_jana_jayarathna_k8s"
     prefix      = "terraform/gcp/boilerplate"
-    # credentials = "./token.json"
+    credentials = var.gce_token
   }
 }
 

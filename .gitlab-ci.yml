@@ -23,7 +23,7 @@ Build:
     - terraform get
     - terraform init
     - terraform plan
-    - terraform apply --auto-approve
+    - terraform apply -var="gce_token=$GCE_TOKEN" --auto-approve
   tags:
     - gcp-terraform-boilerplate
 
