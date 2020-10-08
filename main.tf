@@ -6,12 +6,10 @@ provider "google" {
   zone        = var.zone
 }
 
-# # Configure the backend (variables are not allowed for backend configuration)
+# Configure the backend (variables are not allowed for backend configuration, setting the credentials 
+# through the gitlab cicd variables)
 terraform {
   backend "gcs" {
-    # bucket      = "tf_backend_gcp_banuka_jana_jayarathna_k8s"
-    # prefix      = "terraform/gcp/boilerplate"
-    # credentials = var.gce_token
   }
 }
 
@@ -76,17 +74,17 @@ module "private_instance" {
   metadata_Name_value = "private_vm"
 }
 
-# create firewall rule with ssh access to all the instances
-# module "firewall_rule_ssh_all" {
-#   source = "./modules/firewall_rules"
+# create firewall rule with ssh access to the public instance/s
+module "firewall_rule_ssh_all" {
+  source = "./modules/firewall_rules"
 
-#   firewall_rule_name = "ssh-all-instances"
-#   network = module.network.network_name
-#   protocol = "tcp"
-#   ports = ["22"]
-#   source_ranges = ["0.0.0.0/0"]
-
-# }
+  firewall_rule_name = "ssh-all-public-instances"
+  network = module.network.network_name
+  protocol = "tcp"
+  ports = ["22"]
+  source_ranges = ["0.0.0.0/0"]
+  target_tags = ["public-vm"]
+}
 
 
 # create firewall rule to access only the public vm
