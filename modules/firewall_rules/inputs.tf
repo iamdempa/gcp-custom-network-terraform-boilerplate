@@ -6,9 +6,9 @@ variable "network" {
     type = string
 }
 
-# variable "protocol" {
-#     type = string
-# }
+variable "protocol_type" {
+    type = string
+}
 
 variable "ports" {
     type = list

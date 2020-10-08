@@ -4,7 +4,7 @@ resource "google_compute_firewall" "firewall_rule" {
   network = var.network
 
   allow {
-    protocol = var.protocol
+    protocol = var.protocol_type
     # ports    = var.ports
   }
 
