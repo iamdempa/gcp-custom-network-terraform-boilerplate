@@ -96,7 +96,7 @@ module "firewall_rule_public_vm" {
   firewall_rule_name = "access-public-vm"
   network = module.network.network_name
   protocol_type = "icmp"
-  ports = ["22"]
+  ports = [""]
   source_ranges = ["0.0.0.0/0"]
   target_tags = ["public-vm"]
 }
