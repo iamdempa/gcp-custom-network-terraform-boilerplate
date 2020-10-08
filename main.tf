@@ -82,7 +82,7 @@ module "firewall_rule_ssh_all" {
 
   firewall_rule_name = "ssh-all-public-instances"
   network = module.network.network_name
-  protocol = "tcp"
+  protocol_type = "tcp"
   ports = ["22"]
   source_ranges = ["0.0.0.0/0"]
   target_tags = ["public-vm"]
