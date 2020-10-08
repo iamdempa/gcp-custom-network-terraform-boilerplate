@@ -77,7 +77,7 @@ module "private_instance" {
 }
 
 # create firewall rule with ssh access to the public instance/s
-module "firewall_rule_ssh_all" {
+module "firewall_rule_public_ssh_all" {
   source = "./modules/firewall_rules"
 
   firewall_rule_name = "ssh-all-public-instances"
@@ -89,26 +89,28 @@ module "firewall_rule_ssh_all" {
 }
 
 # create firewall rule to access only the public vm
-module "firewall_rule_public_vm" {
+module "firewall_rule_icmp_public" {
   source = "./modules/firewall_rules"
 
   firewall_rule_name = "access-public-vm"
   network = module.network.network_name
   protocol_type = "icmp"
   ports_types = null
+  source_tags = null
   source_ranges = ["0.0.0.0/0"]
   target_tags = ["public-vm"]
 }
 
+module "firewall_rule_private_vm" {
+  source = "./modules/firewall_rules"
 
-# resource "google_compute_firewall" "default" {
-#   name    = "test-firewall"
-#   network = module.network.network_name
+  firewall_rule_name = "private_vm"
+  network = module.network.network_name
+  protocol_type = "icmp"
+  ports_types = null
+  source_tags = ["public-vm"]
+  source_ranges = null
+  target_tags = ["public-vm"]
+}
 
-#   allow {
-#     protocol = "icmp"
-#   }
 
-#   source_ranges = ["0.0.0.0/0"]
-#   target_tags = ["public-vm"]
-# }

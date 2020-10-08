@@ -14,6 +14,10 @@ variable "ports_types" {
     type = list
 }
 
+variable "source_tags" {
+    type = list
+}
+
 variable "source_ranges" {
     type = list
 }
