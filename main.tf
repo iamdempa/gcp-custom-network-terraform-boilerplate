@@ -10,7 +10,8 @@ provider "google" {
 terraform {
   backend "gcs" {
     bucket      = "tf_backend_gcp_banuka_jana_jayarathna_k8s"
-    prefix      = "terraform/gcp/boilerplate"    
+    prefix      = "terraform/gcp/boilerplate"
+    # credentials = "./token.json"
   }
 }
 
@@ -73,4 +74,14 @@ module "private_instance" {
   machine_image = "ubuntu-1804-bionic-v20200317"
   subnetwork = module.private_subnet.sub_network_name
   metadata_Name_value = "private_vm"
+}
+
+# create firewall rule with ssh access to all the instances
+module "firewall_rule_ssh_all" {
+  source = "./modules/firewall_rules"
+
+  firewall_rule_name = "ssh-all-instances"
+  protocol = "tcp"
+  ports = ["22"]
+  source_ranges = ["0.0.0.0/0"]
 }
