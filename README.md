@@ -11,4 +11,4 @@ This repository has two branches namely `no-backend` and `with-backend`
 | First body part | Second cell  | 
 | Second line     | foo          | 
 | Third line      | quux         | 
-|-----------------+--------------+
+
