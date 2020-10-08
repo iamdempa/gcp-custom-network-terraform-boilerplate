@@ -111,7 +111,7 @@ module "firewall_rule_private_vm" {
   ports_types = null
   source_tags = ["public-vm"]
   source_ranges = null
-  target_tags = ["public-vm"]
+  target_tags = ["private-vm"]
 }
 
 
