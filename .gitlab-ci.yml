@@ -34,7 +34,7 @@ destroy_if_failed:
     - terraform destroy --auto-approve
   when: on_failure
   tags:
-    - banuka-gcp
+    - gcp-terraform-boilerplate
 
 destroy:
   stage: Clean Up
@@ -43,4 +43,4 @@ destroy:
     - terraform destroy --auto-approve
   when: manual
   tags:
-    - banuka-gcp
+    - gcp-terraform-boilerplate
