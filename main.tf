@@ -15,9 +15,19 @@ terraform {
   }
 }
 
-module "network_boiler" {
+
+# creating the network 
+module "network" {
   source = "./modules/network"
 
   network_name = "network-boilerplate"
   auto_create_subnetworks = "false"
 }
+
+# # creating the public subnet 
+# module "public_subnet" {
+#   source = "./modules/network"
+
+#   network_name = "network-boilerplate"
+#   auto_create_subnetworks = "false"
+# }
