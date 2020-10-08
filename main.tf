@@ -1,6 +1,6 @@
 # Provide 
 provider "google" {
-  credentials = file("token.json")
+  # credentials = file("token.json")
   project     = var.project_name
   region      = var.region
   zone        = var.zone
@@ -10,8 +10,7 @@ provider "google" {
 terraform {
   backend "gcs" {
     bucket      = "tf_backend_gcp_banuka_jana_jayarathna_k8s"
-    prefix      = "terraform/gcp/boilerplate"
-    # credentials = "./token.json"
+    prefix      = "terraform/gcp/boilerplate"    
   }
 }
 
