@@ -10,7 +10,7 @@ variable "protocol_type" {
     type = string
 }
 
-variable "ports" {
+variable "ports_types" {
     type = list
 }
 
