@@ -23,7 +23,7 @@ Build:
     - terraform get
     - terraform init -backend-config="bucket=tf_backend_gcp_banuka_jana_jayarathna_k8s" -backend-config="prefix=terraform/gcp/boilerplate" -backend-config="credentials=$GCE_TOKEN"
     - terraform plan
-    - terraform apply -var="gce_token=$GCE_TOKEN" --auto-approve
+    - terraform apply --auto-approve
   tags:
     - gcp-terraform-boilerplate
 
@@ -39,7 +39,7 @@ destroy_if_failed:
 destroy:
   stage: Clean Up
   script:
-    - terraform init
+    - terraform init -backend-config="bucket=tf_backend_gcp_banuka_jana_jayarathna_k8s" -backend-config="prefix=terraform/gcp/boilerplate" -backend-config="credentials=$GCE_TOKEN"
     - terraform destroy --auto-approve
   when: manual
   tags:
