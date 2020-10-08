@@ -14,6 +14,14 @@ variable "bucket_name" {
   type = string
 }
 
+variable "prefix" {
+  type = string
+}
+
+variable "token_path" {
+  type = string
+}
+
 variable "storage_class" {
   type = string
 }

@@ -1,5 +1,7 @@
 project_name = "possible-origin-236919"
 region = "us-west2"
 zone = "us-west2-a"
-bucket_name = "tf_backend_gcp_banuka_jana_jayarathna"
+bucket_name = "tf_backend_gcp_banuka_jana_jayarathna_k8s"
+prefix = "terraform/gcp/boilerplate"
+token_path = "./token.json"
 storage_class = "REGIONAL"

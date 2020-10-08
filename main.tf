@@ -9,8 +9,16 @@ provider "google" {
 # Configure the backend
 terraform {
   backend "gcs" {
-    bucket      = "tf_backend_gcp_banuka_jana_jayarathna_k8s"
-    prefix      = "terraform/gcp/boilerplate"
-    credentials = "token.json"
+    bucket      = var.bucket_name
+    prefix      = var.prefix
+    credentials = var.token_path
   }
+}
+
+module "network" {
+  source = "modules/network"
+
+  cluster_name           = "webservers-stage"
+  db_remote_state_bucket = "(YOUR_BUCKET_NAME)"
+  db_remote_state_key    = "stage/data-stores/mysql/terraform.tfstate"
 }
