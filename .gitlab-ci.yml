@@ -4,8 +4,7 @@ stages:
   - Clean Up
 
 Install-Terraform:
-  stage: PREREQUISITES
-  resource_group: prerequisites
+  stage: Install Terraform
   script:
     - export VER="0.13.0-beta3"
     - wget https://releases.hashicorp.com/terraform/${VER}/terraform_${VER}_linux_amd64.zip
@@ -28,7 +27,7 @@ Build:
     - gcp-terraform-boilerplate
 
 destroy_if_failed:
-  stage: DESTROY
+  stage: Clean Up
   script:
     - terraform init
     - terraform destroy --auto-approve
@@ -37,7 +36,7 @@ destroy_if_failed:
     - banuka-gcp
 
 destroy:
-  stage: DESTROY
+  stage: Clean Up
   script:
     - terraform init
     - terraform destroy --auto-approve
