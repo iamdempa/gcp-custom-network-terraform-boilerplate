@@ -25,7 +25,3 @@ variable "token_path" {
 variable "storage_class" {
   type = string
 }
-
-variable "gce_token" {
-  type = string
-}

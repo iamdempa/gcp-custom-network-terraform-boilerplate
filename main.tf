@@ -7,13 +7,13 @@ provider "google" {
 }
 
 # # Configure the backend (variables are not allowed for backend configuration)
-# terraform {
-#   backend "gcs" {
-#     bucket      = "tf_backend_gcp_banuka_jana_jayarathna_k8s"
-#     prefix      = "terraform/gcp/boilerplate"
-#     credentials = var.gce_token
-#   }
-# }
+terraform {
+  backend "gcs" {
+    # bucket      = "tf_backend_gcp_banuka_jana_jayarathna_k8s"
+    # prefix      = "terraform/gcp/boilerplate"
+    # credentials = var.gce_token
+  }
+}
 
 
 # creating the network 
