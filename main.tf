@@ -85,5 +85,5 @@ module "firewall_rule_ssh_all" {
   protocol = "tcp"
   ports = ["22"]
   source_ranges = ["0.0.0.0/0"]
-  
+
 }
