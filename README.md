@@ -14,7 +14,7 @@ The high-level overview diagram:
 
 * or you can use a `shared` gitlab-runner but do the configurations accordingly. For this you need the `Google` credentials file for the specific gcp project with relavent permissions.
 
-For setting up a `specific` gitlab runner follow this [these]{: #link} steps in my other repository.
+For setting up a `specific` gitlab runner follow this [these] steps in my other repository.
 
 [these]: https://gitlab.com/iamdempa/k8s-gcp-cicd
 
@@ -33,5 +33,7 @@ For the 2nd scenario, you need to create a Variable to store the `credentials` f
 And also **replace** the `bucket` and `prefix` values with yours.
 
 ```
-terraform init -backend-config="bucket=<your-bucket-name>" -backend-config="prefix=<prefix>" -backend-config="credentials=$GCE_TOKEN"
+terraform init -backend-config="bucket=<your-bucket-name>" \
+               -backend-config="prefix=<prefix>" \
+               -backend-config="credentials=$GCE_TOKEN"
 ```
