@@ -77,13 +77,13 @@ module "private_instance" {
 }
 
 # create firewall rule with ssh access to all the instances
-module "firewall_rule_ssh_all" {
-  source = "./modules/firewall_rules"
+# module "firewall_rule_ssh_all" {
+#   source = "./modules/firewall_rules"
 
-  firewall_rule_name = "ssh-all-instances"
-  network = module.network.network_name
-  protocol = "tcp"
-  ports = ["22"]
-  source_ranges = ["0.0.0.0/0"]
+#   firewall_rule_name = "ssh-all-instances"
+#   network = module.network.network_name
+#   protocol = "tcp"
+#   ports = ["22"]
+#   source_ranges = ["0.0.0.0/0"]
 
-}
+# }
