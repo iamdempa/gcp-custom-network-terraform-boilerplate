@@ -1,10 +1,11 @@
-# gcp-custom-network-terraform
+# gcp-custom-network-terraform-boilerplate
 
 A terraform boilerplate for creating a 3-tier web app architecture using a custom network. This includes a VM in public subnet exposed to internet and a private subnet instance only accessible to the instance in public subnet.
 
 
 The high-level overview diagram:
 
+![High Level Overview Diagram](/images/high-level.png "High Level Overview Diagram")
 
 
 ## Prerequisites
