@@ -1,0 +1,46 @@
+stages:
+  - Install Terraform
+  - Build the Infrastructure
+  - Clean Up
+
+Install-Terraform:
+  stage: PREREQUISITES
+  resource_group: prerequisites
+  script:
+    - export VER="0.13.0-beta3"
+    - wget https://releases.hashicorp.com/terraform/${VER}/terraform_${VER}_linux_amd64.zip
+    - unzip terraform_${VER}_linux_amd64.zip
+    - mv terraform /usr/local/bin/
+    - pwd
+    - rm -rf terraform_${VER}_linux_amd64.zip
+    - which terraform
+  tags:
+    - gcp-terraform-boilerplate
+
+Build:
+  stage: Build the Infrastructure
+  script:
+    - terraform get
+    - terraform init
+    - terraform plan
+    - terraform apply --auto-approve
+  tags:
+    - gcp-terraform-boilerplate
+
+destroy_if_failed:
+  stage: DESTROY
+  script:
+    - terraform init
+    - terraform destroy --auto-approve
+  when: on_failure
+  tags:
+    - banuka-gcp
+
+destroy:
+  stage: DESTROY
+  script:
+    - terraform init
+    - terraform destroy --auto-approve
+  when: manual
+  tags:
+    - banuka-gcp
