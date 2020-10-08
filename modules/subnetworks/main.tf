@@ -3,5 +3,5 @@ resource "google_compute_subnetwork" "public-subnetwork" {
   ip_cidr_range = var.public_cidr
   region        = var.public_subnetwork_region
   network       = var.network
-  private_ip_google_access = "false"
+  private_ip_google_access = var.private_ip_google_access
 }

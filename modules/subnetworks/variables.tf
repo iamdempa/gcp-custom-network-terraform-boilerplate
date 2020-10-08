@@ -16,3 +16,7 @@ variable "public_subnetwork_region" {
 variable "network" {
   type = string
 }
+
+variable "private_ip_google_access" {
+  type = string
+}

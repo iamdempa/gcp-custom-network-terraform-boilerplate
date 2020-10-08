@@ -24,10 +24,13 @@ module "network" {
   auto_create_subnetworks = "false"
 }
 
-# # creating the public subnet 
-# module "public_subnet" {
-#   source = "./modules/network"
+# creating the public subnet 
+module "public_subnet" {
+  source = "./modules/subnetworks"
 
-#   network_name = "network-boilerplate"
-#   auto_create_subnetworks = "false"
-# }
+  public_subnetwork_name = "public-subnetwork"
+  public_cidr = "10.0.0.0/21"
+  public_subnetwork_region = "us-west2"
+  network = module.network.network_name
+  private_ip_google_access = "false"
+}
