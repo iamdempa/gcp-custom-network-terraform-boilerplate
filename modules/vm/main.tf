@@ -22,3 +22,4 @@ resource "google_compute_instance" "virtual-machine" {
   metadata = {
     Name = var.metadata_Name_value
   }
+}  
