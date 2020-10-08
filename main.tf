@@ -88,7 +88,6 @@ module "firewall_rule_ssh_all" {
   target_tags = ["public-vm"]
 }
 
-
 # create firewall rule to access only the public vm
 module "firewall_rule_public_vm" {
   source = "./modules/firewall_rules"
