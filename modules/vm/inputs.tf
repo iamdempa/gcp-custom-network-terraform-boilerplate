@@ -1,5 +1,5 @@
 variable "instance_name" {
-    type = "string"
+    type = string
 }
 
 variable "machine_type" {

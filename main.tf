@@ -56,7 +56,7 @@ module "public_instance" {
   network_tags = ["public-vm", "test"]
   machine_image = "ubuntu-1804-bionic-v20200317"
   subnetwork = module.public_subnet.sub_network_name
-  metadata_Name_value = ["public_vm"]
+  metadata_Name_value = "public_vm"
   
 }
 
@@ -71,5 +71,5 @@ module "private_instance" {
   network_tags = ["public-vm", "test"]
   machine_image = "ubuntu-1804-bionic-v20200317"
   subnetwork = module.private_subnet.sub_network_name
-  metadata_Name_value = ["private_vm"]
+  metadata_Name_value = "private_vm"
 }
