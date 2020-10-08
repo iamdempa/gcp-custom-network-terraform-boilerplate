@@ -10,9 +10,9 @@ variable "protocol_type" {
     type = string
 }
 
-variable "ports_types" {
-    type = list
-}
+# variable "ports_types" {
+#     type = list
+# }
 
 variable "source_ranges" {
     type = list
