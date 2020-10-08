@@ -50,7 +50,7 @@ module "private_subnet" {
 module "public_instance" {
   source = "./modules/vm"
 
-  name = "public-vm"
+  instance_name = "public-vm"
   machine_type = "e2-medium"
   vm_zone = "us-west2-a"
   network_tags = ["public-vm", "test"]
@@ -65,7 +65,7 @@ module "public_instance" {
 module "private_instance" {
   source = "./modules/vm"
 
-  name = "private-vm"
+  instance_name = "private-vm"
   machine_type = "e2-medium"
   vm_zone = "us-west2-a"
   network_tags = ["public-vm", "test"]

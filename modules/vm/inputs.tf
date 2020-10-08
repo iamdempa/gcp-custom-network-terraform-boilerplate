@@ -23,5 +23,5 @@ variable "network_tags" {
 }
 
 variable "metadata_Name_value" {
-    type = "string"
+    type = string
 }
