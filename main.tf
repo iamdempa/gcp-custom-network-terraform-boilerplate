@@ -87,3 +87,16 @@ module "private_instance" {
 #   source_ranges = ["0.0.0.0/0"]
 
 # }
+
+
+# create firewall rule to access only the public vm
+module "firewall_rule_public_vm" {
+  source = "./modules/firewall_rules"
+
+  firewall_rule_name = "access-public-vm"
+  network = module.network.network_name
+  protocol = "icmp"
+  ports = [""]
+  source_ranges = ["0.0.0.0/0"]
+  target_tags = ["public-vm"]
+}
