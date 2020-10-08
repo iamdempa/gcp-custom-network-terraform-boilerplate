@@ -39,5 +39,6 @@ terraform init -backend-config="bucket=<your-bucket-name>" \
                -backend-config="prefix=<prefix>" \
                -backend-config="credentials=$GCE_TOKEN"
 ```
+---
 
 > PS: It is not healthy to store your credentials or API tokens for public visibility. Use the `no-backend` branch.
