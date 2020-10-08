@@ -45,3 +45,5 @@ module "private_subnet" {
   network = module.network.network_name
   private_ip_google_access = "false"
 }
+
+# create the vm in public subnet
