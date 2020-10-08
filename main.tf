@@ -6,7 +6,7 @@
 
 # provide 
 provider "google" {
-  # credentials = file("token.json")
+  credentials = file(var.gce_token)
   project     = var.project_name
   region      = var.region
   zone        = var.zone
@@ -23,8 +23,6 @@ provider "google" {
 # through the gitlab cicd variables)
 terraform {
   backend "gcs" {
-    bucket = "tf_backend_gcp_banuka_jana_jayarathna_k8s"
-    prefix = "terraform/gcp/boilerplate"
   }
 }
 
