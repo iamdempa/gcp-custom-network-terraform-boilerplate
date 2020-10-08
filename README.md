@@ -18,7 +18,7 @@ For setting up a `specific` gitlab runner follow this [these] steps in my other 
 
 [these]: https://gitlab.com/iamdempa/k8s-gcp-cicd
 
-## Two Branches - Two backend configurations
+## Two Branches for Two backend configurations
 
 This repository has two branches namely `no-backend` and `with-backend` for configuring the `terraform` backend block for `gcp` as per your requirements.
 
@@ -28,7 +28,9 @@ This repository has two branches namely `no-backend` and `with-backend` for conf
 | 2. **with-backend**     |  Configure the backend with Google Cloud Platform account credentials in JSON format     | 
 
 
-For the 2nd scenario, you need to create a Variable to store the `credentials` file and here I have set the variable name as `GCE_TOKEN` - (Settings -> CI/CD -> Variables)
+For the 2nd scenario, you need to create a Variable to store the `credentials` file and here I have set the variable name as `GCE_TOKEN` using;
+
+> (Settings -> CI/CD -> Variables)
 
 And also **replace** the `bucket` and `prefix` values with yours.
 
@@ -37,3 +39,5 @@ terraform init -backend-config="bucket=<your-bucket-name>" \
                -backend-config="prefix=<prefix>" \
                -backend-config="credentials=$GCE_TOKEN"
 ```
+
+PS: It is not healthy to store your credentials or API tokens for public visibility. Use the `no-backend` branch.
