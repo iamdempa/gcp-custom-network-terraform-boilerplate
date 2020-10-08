@@ -17,7 +17,7 @@ variable "network" {
   type = string
 }
 
-variable "depends_on" {
+variable "depends_on_resoures" {
   type = list
 }
 
