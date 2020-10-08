@@ -17,6 +17,10 @@ variable "network" {
   type = string
 }
 
+variable "depends_on" {
+  type = list
+}
+
 variable "private_ip_google_access" {
   type = string
 }
