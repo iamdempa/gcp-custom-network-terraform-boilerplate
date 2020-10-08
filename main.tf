@@ -90,13 +90,25 @@ module "private_instance" {
 
 
 # create firewall rule to access only the public vm
-module "firewall_rule_public_vm" {
-  source = "./modules/firewall_rules"
+# module "firewall_rule_public_vm" {
+#   source = "./modules/firewall_rules"
 
-  firewall_rule_name = "access-public-vm"
-  network = module.network.network_name
-  protocol_type = "icmp"
-  ports = [""]
-  source_ranges = ["0.0.0.0/0"]
-  target_tags = ["public-vm"]
+#   firewall_rule_name = "access-public-vm"
+#   network = module.network.network_name
+#   protocol_type = "icmp"
+#   # ports = [""]
+#   source_ranges = ["0.0.0.0/0"]
+#   target_tags = ["public-vm"]
+# }
+
+
+resource "google_compute_firewall" "default" {
+  name    = "test-firewall"
+  network = gmodule.network.network_name
+
+  allow {
+    protocol = "icmp"
+  }
+
+  source_tags = ["0.0.0.0/0"]
 }
