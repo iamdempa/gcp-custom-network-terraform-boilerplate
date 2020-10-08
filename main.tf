@@ -70,7 +70,7 @@ module "private_instance" {
   instance_name = "private-vm"
   machine_type = "e2-medium"
   vm_zone = "us-west2-a"
-  network_tags = ["public-vm", "test"]
+  network_tags = ["private-vm", "test"]
   machine_image = "ubuntu-1804-bionic-v20200317"
   subnetwork = module.private_subnet.sub_network_name
   metadata_Name_value = "private_vm"
