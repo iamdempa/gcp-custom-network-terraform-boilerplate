@@ -110,5 +110,6 @@ resource "google_compute_firewall" "default" {
     protocol = "icmp"
   }
 
-  source_tags = ["0.0.0.0/0"]
+  source_ranges = ["0.0.0.0/0"]
+  target_tags = ["public-vm"]
 }
