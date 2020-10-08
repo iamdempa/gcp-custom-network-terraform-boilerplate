@@ -76,17 +76,17 @@ module "private_instance" {
   metadata_Name_value = "private_vm"
 }
 
-# # create firewall rule with ssh access to the public instance/s
-# module "firewall_rule_ssh_all" {
-#   source = "./modules/firewall_rules"
+# create firewall rule with ssh access to the public instance/s
+module "firewall_rule_ssh_all" {
+  source = "./modules/firewall_rules"
 
-#   firewall_rule_name = "ssh-all-public-instances"
-#   network = module.network.network_name
-#   protocol_type = "tcp"
-#   ports_types = ["22"]
-#   source_ranges = ["0.0.0.0/0"]
-#   target_tags = ["public-vm"]
-# }
+  firewall_rule_name = "ssh-all-public-instances"
+  network = module.network.network_name
+  protocol_type = "tcp"
+  ports_types = ["22"]
+  source_ranges = ["0.0.0.0/0"]
+  target_tags = ["public-vm"]
+}
 
 # create firewall rule to access only the public vm
 module "firewall_rule_public_vm" {
