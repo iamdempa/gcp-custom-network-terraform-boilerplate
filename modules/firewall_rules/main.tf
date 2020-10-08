@@ -5,7 +5,7 @@ resource "google_compute_firewall" "firewall_rule" {
 
   allow {
     protocol = var.protocol
-    ports    = var.ports
+    # ports    = var.ports
   }
 
   # source_tags = ["kubernetes-ssh-all", "0.0.0.0/0"]
